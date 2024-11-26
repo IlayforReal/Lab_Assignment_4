@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -7,13 +7,13 @@ import {
   Image,
   Switch,
   Dimensions,
-} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import * as ImagePicker from 'expo-image-picker';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { LinearGradient } from 'expo-linear-gradient'; // Import LinearGradient
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import * as ImagePicker from "expo-image-picker";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { LinearGradient } from "expo-linear-gradient";
 
-const { width } = Dimensions.get('window');
+const { width } = Dimensions.get("window");
 
 const Profile = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -22,12 +22,12 @@ const Profile = () => {
   useEffect(() => {
     const loadProfileImage = async () => {
       try {
-        const savedImage = await AsyncStorage.getItem('profileImage');
+        const savedImage = await AsyncStorage.getItem("profileImage");
         if (savedImage) {
           setProfileImage(savedImage);
         }
       } catch (error) {
-        console.error('Failed to load profile image:', error);
+        console.error("Failed to load profile image:", error);
       }
     };
     loadProfileImage();
@@ -49,9 +49,9 @@ const Profile = () => {
       const imageUri = result.assets[0].uri;
       setProfileImage(imageUri);
       try {
-        await AsyncStorage.setItem('profileImage', imageUri);
+        await AsyncStorage.setItem("profileImage", imageUri);
       } catch (error) {
-        console.error('Failed to save profile image:', error);
+        console.error("Failed to save profile image:", error);
       }
     }
   };
@@ -59,7 +59,7 @@ const Profile = () => {
   const ProfileHeader = () => {
     return (
       <LinearGradient
-        colors={isDarkMode ? ['#333', '#666'] : ['#61cadf', '#cee5ee']} // Gradient color adjustment based on dark mode
+        colors={isDarkMode ? ["#333", "#666"] : ["#61cadf", "#cee5ee"]}
         style={styles.headerContainer}
       >
         <View style={styles.profileImageContainer}>
@@ -67,7 +67,9 @@ const Profile = () => {
             <Image source={{ uri: profileImage }} style={styles.profileImage} />
           ) : (
             <View style={styles.profileImagePlaceholder}>
-              <Text style={{ color: isDarkMode ? '#bbb' : '#888' }}>No Image</Text>
+              <Text style={{ color: isDarkMode ? "#bbb" : "#888" }}>
+                No Image
+              </Text>
             </View>
           )}
 
@@ -79,10 +81,10 @@ const Profile = () => {
             onPress={handleChangePicture}
           />
         </View>
-        <Text style={[styles.name, { color: isDarkMode ? '#FFF' : '#000' }]}>
+        <Text style={[styles.name, { color: isDarkMode ? "#FFF" : "#000" }]}>
           Shiela Theresa Mosqueda
         </Text>
-        <Text style={[styles.status, { color: '#25a3d0' }]}>
+        <Text style={[styles.status, { color: "#25a3d0" }]}>
           Software Engineer
         </Text>
       </LinearGradient>
@@ -94,13 +96,17 @@ const Profile = () => {
       <View
         style={[
           styles.contactContainer,
-          { backgroundColor: isDarkMode ? '#333' : '#e7f7fc' }, // Background color adjustment
+          { backgroundColor: isDarkMode ? "#333" : "#e7f7fc" },
         ]}
       >
-        <Text style={[styles.infoText, { color: isDarkMode ? '#FFF' : '#000' }]}>
+        <Text
+          style={[styles.infoText, { color: isDarkMode ? "#FFF" : "#000" }]}
+        >
           Email: shiela.mosqueda@example.com
         </Text>
-        <Text style={[styles.infoText, { color: isDarkMode ? '#FFF' : '#000' }]}>
+        <Text
+          style={[styles.infoText, { color: isDarkMode ? "#FFF" : "#000" }]}
+        >
           Phone: +63 123 4567 890
         </Text>
       </View>
@@ -114,61 +120,81 @@ const Profile = () => {
           <Ionicons
             name="moon"
             size={20}
-            color={isDarkMode ? '#FFF' : '#000'}
+            color={isDarkMode ? "#FFF" : "#000"}
           />
-          <Text style={[styles.settingText, { color: isDarkMode ? '#FFF' : '#000' }]}>
+          <Text
+            style={[
+              styles.settingText,
+              { color: isDarkMode ? "#FFF" : "#000" },
+            ]}
+          >
             Dark Mode
           </Text>
           <Switch
             value={isDarkMode}
             onValueChange={toggleDarkMode}
-            thumbColor={isDarkMode ? '#f4f3f4' : '#f4f3f4'}
-            trackColor={{ false: '#767577', true: '#81b0ff' }}
+            thumbColor={isDarkMode ? "#f4f3f4" : "#f4f3f4"}
+            trackColor={{ false: "#767577", true: "#81b0ff" }}
           />
         </View>
         <View style={styles.settingItem}>
           <Ionicons
             name="card"
             size={20}
-            color={isDarkMode ? '#FFF' : '#000'}
+            color={isDarkMode ? "#FFF" : "#000"}
           />
-          <Text style={[styles.settingText, { color: isDarkMode ? '#FFF' : '#000' }]}>
+          <Text
+            style={[
+              styles.settingText,
+              { color: isDarkMode ? "#FFF" : "#000" },
+            ]}
+          >
             Cards
           </Text>
           <Ionicons
             name="chevron-forward"
             size={20}
-            color={isDarkMode ? '#FFF' : '#888'}
+            color={isDarkMode ? "#FFF" : "#888"}
           />
         </View>
         <View style={styles.settingItem}>
           <Ionicons
             name="person"
             size={20}
-            color={isDarkMode ? '#FFF' : '#000'}
+            color={isDarkMode ? "#FFF" : "#000"}
           />
-          <Text style={[styles.settingText, { color: isDarkMode ? '#FFF' : '#000' }]}>
+          <Text
+            style={[
+              styles.settingText,
+              { color: isDarkMode ? "#FFF" : "#000" },
+            ]}
+          >
             Profile Details
           </Text>
           <Ionicons
             name="chevron-forward"
             size={20}
-            color={isDarkMode ? '#FFF' : '#888'}
+            color={isDarkMode ? "#FFF" : "#888"}
           />
         </View>
         <View style={styles.settingItem}>
           <Ionicons
             name="settings"
             size={20}
-            color={isDarkMode ? '#FFF' : '#000'}
+            color={isDarkMode ? "#FFF" : "#000"}
           />
-          <Text style={[styles.settingText, { color: isDarkMode ? '#FFF' : '#000' }]}>
+          <Text
+            style={[
+              styles.settingText,
+              { color: isDarkMode ? "#FFF" : "#000" },
+            ]}
+          >
             Settings
           </Text>
           <Ionicons
             name="chevron-forward"
             size={20}
-            color={isDarkMode ? '#FFF' : '#888'}
+            color={isDarkMode ? "#FFF" : "#888"}
           />
         </View>
       </View>
@@ -179,7 +205,7 @@ const Profile = () => {
     <ScrollView
       contentContainerStyle={[
         styles.container,
-        { backgroundColor: isDarkMode ? '#222' : '#eef9fd' }, // General background color adjustment
+        { backgroundColor: isDarkMode ? "#222" : "#eef9fd" },
       ]}
     >
       <ProfileHeader />
@@ -194,13 +220,13 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   headerContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     paddingVertical: 25,
   },
   profileImageContainer: {
-    position: 'relative',
-    justifyContent: 'center',
-    alignItems: 'center',
+    position: "relative",
+    justifyContent: "center",
+    alignItems: "center",
   },
   profileImage: {
     width: width * 0.2,
@@ -213,25 +239,25 @@ const styles = StyleSheet.create({
     height: width * 0.2,
     borderRadius: (width * 0.2) / 2,
     marginBottom: 15,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#f0f0f0',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f0f0f0",
   },
   cameraIcon: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
     right: 5,
-    backgroundColor: '#000',
+    backgroundColor: "#000",
     padding: 5,
     borderRadius: 15,
   },
   name: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   status: {
     fontSize: 14,
-    color: '#FFC107',
+    color: "#FFC107",
   },
   contactContainer: {
     paddingHorizontal: 20,
@@ -244,15 +270,14 @@ const styles = StyleSheet.create({
   settingsContainer: {
     paddingHorizontal: 20,
     marginTop: 10,
-   
   },
   settingItem: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingVertical: 15,
     borderBottomWidth: 1,
-    borderBottomColor: '#EEE',
+    borderBottomColor: "#EEE",
   },
   settingText: {
     fontSize: 16,

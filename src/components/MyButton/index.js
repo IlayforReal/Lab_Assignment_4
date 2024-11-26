@@ -1,17 +1,17 @@
-import React from 'react';
-import { Button } from 'react-native-paper';
+import React from "react";
+import { Button } from "react-native-paper";
 
 const MyButton = ({ text, action, mode, size }) => {
   let style = null;
 
   switch (size) {
-    case 'small':
+    case "small":
       style = { ...btnStyle.buttonSmall };
       break;
-    case 'medium':
+    case "medium":
       style = { ...btnStyle.buttonMedium };
       break;
-    case 'large':
+    case "large":
       style = { ...btnStyle.buttonLarge };
       break;
     default:
@@ -24,8 +24,8 @@ const MyButton = ({ text, action, mode, size }) => {
       contentStyle={style}
       mode={mode}
       onPress={() => action()}
-      buttonColor="#4A628A" // Set the button color to #084C61
-      textColor="#FFFFFF" // Ensure white text for contrast
+      buttonColor="#4A628A"
+      textColor="#FFFFFF"
     >
       {text}
     </Button>
