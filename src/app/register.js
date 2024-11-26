@@ -19,7 +19,7 @@ const Register = () => {
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.header}>
           <Text style={styles.title}>Create an account</Text>
-          <TouchableOpacity onPress={() => router.push("/login")}>
+          <TouchableOpacity onPress={() => router.push("/")}>
             <Text style={styles.loginLink}>
               Already have an account? Log in
             </Text>
